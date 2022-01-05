@@ -1,4 +1,4 @@
-package com.company;
+package com.kennedyrobotics.visiondemo;
 
 import org.nowireless.vision.gui.JVideoPanel;
 import org.opencv.highgui.HighGui;
