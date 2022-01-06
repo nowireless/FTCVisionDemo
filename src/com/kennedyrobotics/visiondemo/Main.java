@@ -62,7 +62,6 @@ public class Main {
 
         Mat sourceImage = new Mat();
 
-
         while(true) {
             boolean isOpened = camera.isOpened();
             if (isOpened) {
