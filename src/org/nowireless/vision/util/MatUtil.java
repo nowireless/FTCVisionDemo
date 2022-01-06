@@ -81,7 +81,11 @@ public class MatUtil {
 	 * @return The {@link Mat} containing the image.
 	 */
 	public static Mat makeTextImage(String text) {
-		Mat ret = Mat.ones(480, 640, CvType.CV_8UC3);
+		return makeTextImage(text, 480, 640);
+	}
+
+	public static Mat makeTextImage(String text, int height, int width) {
+		Mat ret = Mat.ones(height, width, CvType.CV_8UC3);
 		ret.setTo(new Scalar(125,125,125));
 		Imgproc.putText(ret, text, new Point(20, 460), Imgproc.FONT_HERSHEY_SCRIPT_COMPLEX, 1.5, new Scalar(0, 0, 255));
 		return ret;
