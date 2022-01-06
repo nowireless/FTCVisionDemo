@@ -1,7 +1,6 @@
 package com.kennedyrobotics.visiondemo;
 
 import org.nowireless.vision.gui.JVideoPanel;
-import org.opencv.highgui.HighGui;
 
 import javax.swing.*;
 
@@ -10,6 +9,8 @@ public class VisionGUI extends JFrame {
     private JPanel container;
     public JVideoPanel input;
     public JVideoPanel output;
+    public JVideoPanel morph;
+    public JVideoPanel threshold;
 
     public VisionGUI() {
         setContentPane(container);
