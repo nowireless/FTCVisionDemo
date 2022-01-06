@@ -24,6 +24,9 @@ public class Main {
             e.printStackTrace();
         }
 
+        // Setup pipeline
+        HSVPipeline pipeline = new HSVPipeline();
+
         //
         // Setup the Gui!
         //
@@ -41,7 +44,7 @@ public class Main {
         frame.setVisible(true);
 
         // Config window
-        Config configFrame = new Config();
+        Config configFrame = new Config(pipeline.config.lowThreshold, pipeline.config.highThreshold);
         configFrame.setTitle("Vision Config");
         configFrame.setSize(400, 600);
         configFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -59,8 +62,6 @@ public class Main {
 
         Mat sourceImage = new Mat();
 
-        // Setup pipeline
-        Pipeline pipeline = new Pipeline();
 
         while(true) {
             boolean isOpened = camera.isOpened();
@@ -70,6 +71,10 @@ public class Main {
                     camera.retrieve(sourceImage);
                     if (!sourceImage.empty()) {
                         System.out.println("TRACE: Got camera frame");
+
+                        pipeline.config.lowThreshold = configFrame.getLowThres();
+                        pipeline.config.highThreshold = configFrame.getHighThres();
+
                         Mat outputImage = pipeline.processFrame(sourceImage);
                         System.out.println("TRACE: Processed framed");
                         // TODO something with the image
